@@ -736,6 +736,7 @@ main.inner-page {
 main.inner-page .container-sm {
     padding-left: 28px;
     padding-right: 28px;
+
 }
 main.inner-page .container-sm .row {
     margin-left: -28px;
