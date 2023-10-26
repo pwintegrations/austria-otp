@@ -722,7 +722,7 @@ body.nav-open:after {
 
 main {
     margin-top: -60px;
-    min-height: calc(100vh - 60px - 120px);
+    min-height: calc(100vh - 120px);
 }
 main.inner-page {
     background: rgb(29, 29, 29);
