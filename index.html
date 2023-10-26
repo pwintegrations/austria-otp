@@ -74,11 +74,11 @@
         </div>
         <div class="element-wrapper" style="grid-area:14 / 1 / 17/ 10;z-index:1">
             <div class="austria-terms">
-                Durch Klicken auf &lt;WEITER&gt; akzeptiere ich ausdrücklich die <a href="/privacy" class="text-link" target="_blank">Datenschutzrichtlinie</a> von Century's und ich nehme zur Kenntnis, dass der Diensteanbieter Century meine Rufnummer für Zwecke der Verrechnung des von mir bestellten Dienstes über meine Mobilfunkrechnung von meinem Mobilfunkanbieter DREI einholt.
+                Durch Klicken auf &apos;WEITER&apos; akzeptiere ich ausdrücklich die <a href="/privacy" class="text-link" target="_blank">Datenschutzrichtlinie</a> von Century's und ich nehme zur Kenntnis, dass der Diensteanbieter Century meine Rufnummer für Zwecke der Verrechnung des von mir bestellten Dienstes über meine Mobilfunkrechnung von meinem Mobilfunkanbieter DREI einholt.
             </div>
         </div>
         <div class="element-wrapper" style="grid-area:17 / 1 / 18 / 10;z-index:1">
-            <button class="backwards-link" onclick="history.back()">
+            <button class="backwards-link" onclick="location.href='https://www.google.com/'">
                 Abbrechen
             </button>
         </div>
@@ -86,14 +86,13 @@
             <div class="austria-footer">
                 <div class="footer-menu">
                     <div class="footer-menu-row">
-                        <a href="">AGB</a>
-                        <a href="">Impressum</a>
-                        <a href="">Datenschutz</a>
+                        <a href="/imprint.html">Impressum</a>
+                        <a href="/terms.html">Nutzungsbedingungen</a>
                     </div>
                     <div class="footer-menu-row">
-                        <a href="">Kontakt</a>
-                        <a href="">Rücktrittsrecht</a>
-                        <a href="">Kündigung</a>
+                        <a href="/contact_us.html">Kontakt</a>
+                        <a href="/privacy.html">Datenschutz</a>
+                        <a href="http://mobileinfo.biz" target="_blank">Kündigung</a>
                     </div>
                 </div>
                 <div class="copyright austria-copyright">
@@ -119,14 +118,15 @@
             sendPhoneBtn.classList.remove('disabled');
 
             sendPhoneBtn.disabled = phoneInput.value.replace(/[ _]/g, '').length !== 10
-            sendPhoneBtn.classList.add(phoneInput.value.replace(/[ _]/g, '').length !== 10 ? 'disabled' : '')
+            if(phoneInput.value.replace(/[ _]/g, '').length !== 10)
+                sendPhoneBtn.classList.add('disabled');
+                phoneInput.classList.add('not-validated');
 
-            phoneInput.classList.add(phoneInput.value.replace(/[ _]/g, '').length !== 10 ? 'not-validated' : 'validated')
         });
 
-        document.querySelector('#send-phone-button').onClick(function (e) {
-            e.preventDefault();
+        document.querySelector('#send-phone-button').addEventListener('click', function (e){
             if (phoneInput.value.replace(/[ _]/g, '').length < 10) {
+                e.preventDefault();
                 phoneInput.parentElement.classList.remove('validated');
                 phoneInput.parentElement.classList.add('not-validated');
                 sendPhoneBtn.disabled = false
